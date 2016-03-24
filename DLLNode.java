@@ -1,16 +1,21 @@
+// Team Shanjeed -- Lorenz Vargas and Calvin Vuong
+// APCS2 pd10
+// HW15 -- Generically Speaking...
+// 2016-03-18
+
 /*****************************************************
  * class DLLNode
  * Implements a node, for use in lists and other container classes.
  *****************************************************/
 
-public class DLLNode {
+public class DLLNode<T> {
 
-    private String _cargo;    //cargo may only be of type String
-    private DLLNode _nextNode, _prevNode; //pointers to next, prev DLLNodes
+    private T _cargo;    //cargo may only be of type T
+    private DLLNode<T> _nextNode, _prevNode; //pointers to next, prev DLLNodes
 
 
     // constructor -- initializes instance vars
-    public DLLNode( String value, DLLNode prev, DLLNode next ) {
+    public DLLNode( T value, DLLNode<T> prev, DLLNode<T> next ) {
 	_cargo = value;
 	_nextNode = next;
 	_prevNode = prev;
@@ -18,29 +23,29 @@ public class DLLNode {
 
 
     //--------------v  ACCESSORS  v--------------
-    public String getCargo() { return _cargo; }
+    public T getCargo() { return _cargo; }
 
-    public DLLNode getNext() { return _nextNode; }
+    public DLLNode<T> getNext() { return _nextNode; }
 
-    public DLLNode getPrev() { return _prevNode; }
+    public DLLNode<T> getPrev() { return _prevNode; }
     //--------------^  ACCESSORS  ^--------------
 
 
     //--------------v  MUTATORS  v--------------
-    public String setCargo( String newCargo ) {
-	String foo = getCargo();
+    public T setCargo( T newCargo ) {
+	T foo = getCargo();
 	_cargo = newCargo;
 	return foo;
     }
 
-    public DLLNode setNext( DLLNode newNext ) {
-	DLLNode foo = getNext();
+    public DLLNode<T> setNext( DLLNode<T> newNext ) {
+	DLLNode<T> foo = getNext();
 	_nextNode = newNext;
 	return foo;
     }
 
-    public DLLNode setPrev( DLLNode newPrev ) {
-	DLLNode foo = getPrev();
+    public DLLNode<T> setPrev( DLLNode<T> newPrev ) {
+	DLLNode<T> foo = getPrev();
 	_prevNode = newPrev;
 	return foo;
     }
