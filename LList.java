@@ -9,8 +9,27 @@
  * Version 03 uses doubly-linked nodes
  *****************************************************/
 
-public class LList<T> implements List<T> { //your List.java must be in same dir
+public class LList<T> implements List<T> extends Iterable<T>{ //your List.java must be in same dir
 
+    private class MyIterator implements Iterator<T>{
+	private DLLNode<T> _curr;
+	
+	public boolean hasNext(){
+	    if ( _curr.getNext() == null )
+		return false;
+	    return true;
+	}
+	
+	public T next(){
+	    //exception throwing
+	    _curr = _curr.getNext();
+	    return _curr;
+	}
+
+	public void remove (){
+	    
+
+    }
     //instance vars
     private DLLNode<T> _head, _tail; //pointers to first and last nodes
     private int _size;
