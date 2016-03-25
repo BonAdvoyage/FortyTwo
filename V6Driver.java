@@ -4,6 +4,7 @@
  *    (ability to run a FOREACH loop over your LList)
  * Assumes local version of List.java, overriding Java built-in interface
  *****************************************************/
+import java.util.Iterator;
 
 public class V6Driver {
 
@@ -24,6 +25,17 @@ public class V6Driver {
 
 	for( String s : wu ) {
 	    System.out.println( s + " raps for the Wu");
+	}
+
+	Iterator<String> itr = wu.iterator();
+	while ( itr.hasNext() ){
+	    String current = itr.next();
+	    if ( current.equals("RZA") || current.equals("GZA") || current.equals("U-God") || current.equals("Method Man") ){
+		itr.remove();
+		System.out.println("removed");
+	    }
+	    else
+		System.out.println( current );
 	}
     }
 

@@ -1,19 +1,22 @@
-// Team CVSA -- Shanjeed Ali and Calvin Vuong
+// Team  -- Advay Sriram and Calvin Vuong
 // APCS2 pd10
-// HW15 -- Generically Speaking...
-// 2016-03-18
+// HW18 -- For Each is the Goal
+// 2016-03-24
 
-/*****************************************************
- * class LList
- * Implements a linked list
- * Version 03 uses doubly-linked nodes
- *****************************************************/
+import java.util.Iterator;
 
-public class LList<T> implements List<T> extends Iterable<T>{ //your List.java must be in same dir
+public class LList<T> implements List<T> { //your List.java must be in same dir
 
-    private class MyIterator implements Iterator<T>{
+    private class MyIterator implements Iterator<T> {
+
 	private DLLNode<T> _curr;
-	
+	private boolean nextCalled;
+
+	public MyIterator(){
+	    _curr = _head;
+	    nextCalled = false;
+	}
+
 	public boolean hasNext(){
 	    if ( _curr.getNext() == null )
 		return false;
@@ -22,14 +25,22 @@ public class LList<T> implements List<T> extends Iterable<T>{ //your List.java m
 	
 	public T next(){
 	    //exception throwing
-	    _curr = _curr.getNext();
-	    return _curr;
+	    DLLNode<T> returnNode = _curr;
+	    _curr = _curr.getNext(); // move to next element
+	    nextCalled = true;
+	    return returnNode.getCargo();
 	}
 
-	public void remove (){
-	    
+	public void remove(){
+	    if ( ! nextCalled )
+		throw new IndexOutOfBoundsException();
+	    _curr.setPrev(null);
+	    nextCalled = true;
+	}
 
     }
+
+
     //instance vars
     private DLLNode<T> _head, _tail; //pointers to first and last nodes
     private int _size;
@@ -40,6 +51,9 @@ public class LList<T> implements List<T> extends Iterable<T>{ //your List.java m
 	_size = 0;
     }
 
+    public MyIterator iterator(){
+	return new MyIterator();
+    }
 
     //--------------v  List interface methods  v--------------
 
