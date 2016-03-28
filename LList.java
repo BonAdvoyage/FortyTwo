@@ -1,7 +1,7 @@
-// Team  -- Advay Sriram and Calvin Vuong
+// Team FortyTwo -- Advay Sriram and Calvin Vuong
 // APCS2 pd10
 // HW18 -- For Each is the Goal
-// 2016-03-24
+// 2016-03-28
 
 import java.util.Iterator;
 
@@ -24,18 +24,17 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 	}
 	
 	public T next(){
-	    //exception throwing
 	    DLLNode<T> returnNode = _curr;
-	    _curr = _curr.getNext(); // move to next element
+	    _curr = _curr.getNext(); // move pointer to next element
 	    nextCalled = true;
 	    return returnNode.getCargo();
 	}
 
 	public void remove(){
 	    if ( ! nextCalled )
-		throw new IndexOutOfBoundsException();
+		throw new IllegalStateException();
 	    _curr.setPrev(null);
-	    nextCalled = true;
+	    nextCalled = false;
 	}
 
     }

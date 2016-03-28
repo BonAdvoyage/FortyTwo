@@ -1,4 +1,4 @@
-// Team Shanjeed -- Lorenz Vargas and Calvin Vuong
+// Team FortyTwo -- Advay Sriram and Calvin Vuong
 // APCS2 pd10
 // HW15 -- Generically Speaking...
 // 2016-03-18
